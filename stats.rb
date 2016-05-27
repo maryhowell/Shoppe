@@ -43,26 +43,29 @@ end
 puts "We sold #{number_of_lamps} Ergonomic Rubber Lamps"
 #------------------------------------
 
-number_of_tools = 0
-all_id_of_tools = {}
+all_id_of_tools = []
 
 d.items.each do |t|
-  if t.category == "Tools"
-    all_id_of_tools
-    binding.pry
+  if t.category.include? "Tools"
+    all_id_of_tools.push t.id
   end
 end
 
-
-
-
-
-
+number_of_tools = 0
+  t.transaction.each do |t|
+    if all_id_of_tools.include? t.item_id
+      number_of_tools += t.quantity
+    end
+  end
 
 puts "We sold #{number_of_tools} items from the Tools category"
+#-----------------------------------
 
 
+
+
+puts "Our total revenue was #{ }"
 
 #questions
-# * Our total revenue was __
+
 # * Harder: the highest grossing category was __
