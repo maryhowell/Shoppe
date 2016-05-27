@@ -8,10 +8,10 @@ Let's suppose we have a storefront. Included in this repo are files containing o
 
 ## Stats
 
-* The user that made the most orders was __
-* We sold __ Ergonomic Rubber Lamps
-* We sold __ items from the Tools category
-* Our total revenue was __
+* The user that made the most orders was Miss Maxwell Gaylord
+* We sold 31 Ergonomic Rubber Lamps
+* We sold 198 items from the Tools category
+* Our total revenue was $65696.65
 * Harder: the highest grossing category was __
 
 ## Background

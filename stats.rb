@@ -67,8 +67,9 @@ d.items.each do |i|
 end
 
 id_quantity = {}
+id_quantity.default = 0
 t.transaction.each do |t|
-  id_quantity[t.item_id] = t.quantity
+  id_quantity[t.item_id] += t.quantity
 end
 
 total_revenue = 0
@@ -77,7 +78,46 @@ id_price.each do |id, price|
 end
 
 puts "Our total revenue was $#{total_revenue.round(2)}"
+#-----------------------------------
 
-#questions
+ids_by_category = {"Tools" => [], "Health" => [], "Electronics" => [], "Kids" => [],
+                 "Computers" => [], "Jewelery" => [], "Games" => [], "Books" => [],
+                 "Garden" => [], "Movies" => [], "Music" => [], "Beauty" => [],
+                 "Industrial" => [],"Automotive" => [], "Sports" => [], "Outdoors" => [],
+                 "Clothing" => []}
 
-# * Harder: the highest grossing category was __
+d.items.each do |t|
+  ids_by_category.each do |cat, ids|
+    if t.category.include? cat
+      ids.push t.id
+    end
+  end
+end
+
+revenue_by_item = {}
+
+id_price.each do |pid, price|
+  id_quantity.each do |qid, quant|
+    if pid == qid
+      revenue_by_item[pid] = price * quant
+    end
+  end
+end
+
+#ids_by_category
+#revenue_by_item = {}
+highest_grossing_category = []
+revenue_by_category = {}
+revenue_by_category.default = 0
+
+ids_by_category.each do |cati, cids|
+  revenue_by_item.each do |rid, rev|
+    if cids.include? rid
+      revenue_by_category[cati] += rev
+    end
+  end
+end
+
+max_rev_category =revenue_by_category.max_by{|key,value| value}
+
+puts "Harder: the highest grossing category was #{max_rev_category.first}"
