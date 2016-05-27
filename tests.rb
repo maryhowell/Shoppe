@@ -99,14 +99,6 @@ class TransactionParserTests < Minitest::Test
 
     assert_equal 5, p.transaction.count
   end
-  
-  def test_can_parse_tuesday
-    p = TransactionParser.new file_path("tuesday")
-    p.parse!
-
-    assert_equal 15, p.transaction.count
-  end
-
 #   # Now it's your turn ... what other tests might be
 #   # helpful here? Feel free to re-use the existing test
 #   # files or to write your own
