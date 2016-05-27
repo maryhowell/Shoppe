@@ -61,10 +61,22 @@ number_of_tools = 0
 puts "We sold #{number_of_tools} items from the Tools category"
 #-----------------------------------
 
+id_price = {}
+d.items.each do |i|
+  id_price[i.id] = i.price
+end
 
+id_quantity = {}
+t.transaction.each do |t|
+  id_quantity[t.item_id] = t.quantity
+end
 
+total_revenue = 0
+id_price.each do |id, price|
+  total_revenue += price * id_quantity[id]
+end
 
-puts "Our total revenue was #{ }"
+puts "Our total revenue was $#{total_revenue.round(2)}"
 
 #questions
 
